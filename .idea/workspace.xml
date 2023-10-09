@@ -5,24 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="222d3eb8-4530-416b-8b04-b6ee591fc584" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/auth/dto/login.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/prisma.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/password.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.development" beforeDir="false" afterPath="$PROJECT_DIR$/.env.development" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.production" beforeDir="false" afterPath="$PROJECT_DIR$/.env.production" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.test" beforeDir="false" afterPath="$PROJECT_DIR$/.env.test" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/auth/validator/login.validation.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/auth/validator/register.validation.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/joi-validation.pipe.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/auth/auth.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/auth.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/auth/auth.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/auth.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/auth.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/auth/jwt.strategy.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/jwt.strategy.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +55,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Mohamad_ka/WebstormProjects/nest-template/src/auth/dto",
+    "last_opened_file_path": "C:/Users/Mohamad_ka/WebstormProjects/nest-template/src/auth/validator",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
@@ -82,12 +71,14 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Mohamad_ka\WebstormProjects\nest-template\src\auth\validator" />
       <recent name="C:\Users\Mohamad_ka\WebstormProjects\nest-template\src\auth\dto" />
       <recent name="C:\Users\Mohamad_ka\WebstormProjects\nest-template\src\utils" />
       <recent name="C:\Users\Mohamad_ka\WebstormProjects\nest-template\src\config" />
       <recent name="C:\Users\Mohamad_ka\WebstormProjects\nest-template" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Mohamad_ka\WebstormProjects\nest-template\src\validator" />
       <recent name="C:\Users\Mohamad_ka\WebstormProjects\nest-template" />
     </key>
   </component>
@@ -170,7 +161,7 @@
       <workItem from="1696684148469" duration="6222000" />
       <workItem from="1696757994030" duration="8179000" />
       <workItem from="1696786549442" duration="1947000" />
-      <workItem from="1696840042182" duration="2920000" />
+      <workItem from="1696840042182" duration="4253000" />
     </task>
     <task id="LOCAL-00001" summary="project init!">
       <created>1696682435661</created>
@@ -186,7 +177,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696760739331</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add auth (login,register)">
+      <created>1696843149393</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1696843149393</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -197,6 +195,7 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="project init!" />
-    <option name="LAST_COMMIT_MESSAGE" value="project init!" />
+    <MESSAGE value="add auth (login,register)" />
+    <option name="LAST_COMMIT_MESSAGE" value="add auth (login,register)" />
   </component>
 </project>
