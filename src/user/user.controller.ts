@@ -1,39 +1,39 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Body, Patch, Delete, UseGuards, Request, UsePipes } from '@nestjs/common';
 import { UserService } from './user.service';
-import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { JwtAuthGuard } from '../common/passport/jwt-auth.guard';
+import { JoiValidationPipe } from '../validator/joi-validation.pipe';
+import { profileUpdateSchema } from './validator/profile.validation';
 
 @Controller('user')
 export class UserController {
     constructor(private readonly userService: UserService) {}
 
-    @Post()
-    create(@Body() createUserDto: CreateUserDto) {
-        return this.userService.create(createUserDto);
-    }
-
+    @UseGuards(JwtAuthGuard)
     @Get('profile')
-    profile() {
-        return this.userService.findAll();
+    getProfile(@Request() req) {
+        return req.user;
     }
 
-    @Get()
-    findAll() {
-        return this.userService.findAll();
+    @UseGuards(JwtAuthGuard)
+    @UsePipes(new JoiValidationPipe(profileUpdateSchema))
+    @Patch('profile')
+    update(@Request() req, @Body() updateUserDto: UpdateUserDto) {
+        const { firstName, lastName } = updateUserDto;
+        // Check and update lastName
+        updateUserDto.lastName =
+            lastName !== undefined && lastName !== null && lastName.trim() === '' ? req.user.lastName : lastName;
+
+        // Check and update firstName
+        updateUserDto.firstName =
+            firstName !== undefined && firstName !== null && firstName.trim() === '' ? req.user.firstName : firstName;
+
+        return this.userService.update(req.user.id, updateUserDto);
     }
 
-    @Get(':id')
-    findOne(@Param('id') id: string) {
-        return this.userService.findOne(+id);
-    }
-
-    @Patch(':id')
-    update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-        return this.userService.update(+id, updateUserDto);
-    }
-
-    @Delete(':id')
-    remove(@Param('id') id: string) {
-        return this.userService.remove(+id);
+    @UseGuards(JwtAuthGuard)
+    @Delete('profile')
+    remove(@Request() req) {
+        return this.userService.remove(req.user.id);
     }
 }

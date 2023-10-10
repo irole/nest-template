@@ -5,13 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="222d3eb8-4530-416b-8b04-b6ee591fc584" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/auth/validator/login.validation.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/auth/validator/register.validation.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/validator/joi-validation.pipe.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/auth/dto/ForgotPassword.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/auth/dto/ResetPassword.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/auth/validator/forgotPassword.validation.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/auth/validator/resetPassword.validation.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/user/validator/profile.validation.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.development" beforeDir="false" afterPath="$PROJECT_DIR$/.env.development" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.production" beforeDir="false" afterPath="$PROJECT_DIR$/.env.production" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.test" beforeDir="false" afterPath="$PROJECT_DIR$/.env.test" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/auth/auth.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/auth.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth/auth.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/auth.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/auth.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth/jwt-auth.guard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/passport/jwt-auth.guard.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth/jwt.strategy.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/passport/jwt.strategy.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth/validator/login.validation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/validator/login.validation.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth/validator/register.validation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/validator/register.validation.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/configuration.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/configuration.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/user/dto/create-user.dto.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/user/dto/update-user.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/dto/update-user.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/user/user.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/user.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/user/user.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/user.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/user/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/user.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,17 +88,18 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Mohamad_ka\WebstormProjects\nest-template\src\auth\validator" />
+      <recent name="C:\Users\Mohamad_ka\WebstormProjects\nest-template\src\user" />
       <recent name="C:\Users\Mohamad_ka\WebstormProjects\nest-template\src\auth\dto" />
       <recent name="C:\Users\Mohamad_ka\WebstormProjects\nest-template\src\utils" />
       <recent name="C:\Users\Mohamad_ka\WebstormProjects\nest-template\src\config" />
-      <recent name="C:\Users\Mohamad_ka\WebstormProjects\nest-template" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Mohamad_ka\WebstormProjects\nest-template\src\common\passport" />
       <recent name="C:\Users\Mohamad_ka\WebstormProjects\nest-template\src\validator" />
       <recent name="C:\Users\Mohamad_ka\WebstormProjects\nest-template" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.start">
+  <component name="RunManager" selected="npm.start:dev">
     <configuration name="format" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -135,8 +152,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.start" />
         <item itemvalue="npm.start:dev" />
+        <item itemvalue="npm.start" />
         <item itemvalue="npm.start:prod" />
         <item itemvalue="npm.lint" />
         <item itemvalue="npm.format" />
@@ -161,7 +178,9 @@
       <workItem from="1696684148469" duration="6222000" />
       <workItem from="1696757994030" duration="8179000" />
       <workItem from="1696786549442" duration="1947000" />
-      <workItem from="1696840042182" duration="4253000" />
+      <workItem from="1696840042182" duration="7177000" />
+      <workItem from="1696861864701" duration="7016000" />
+      <workItem from="1696928241082" duration="2655000" />
     </task>
     <task id="LOCAL-00001" summary="project init!">
       <created>1696682435661</created>
@@ -184,7 +203,21 @@
       <option name="project" value="LOCAL" />
       <updated>1696843149393</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add joi validation">
+      <created>1696844418329</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1696844418329</updated>
+    </task>
+    <task id="LOCAL-00005" summary="helmet add!&#10;cors add!&#10;swagger add!&#10;rate limiter add!">
+      <created>1696864362070</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1696864362070</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -196,6 +229,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="project init!" />
     <MESSAGE value="add auth (login,register)" />
-    <option name="LAST_COMMIT_MESSAGE" value="add auth (login,register)" />
+    <MESSAGE value="add joi validation" />
+    <MESSAGE value="helmet add!&#10;cors add!&#10;swagger add!&#10;rate limiter add!" />
+    <option name="LAST_COMMIT_MESSAGE" value="helmet add!&#10;cors add!&#10;swagger add!&#10;rate limiter add!" />
   </component>
 </project>

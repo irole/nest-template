@@ -10,7 +10,6 @@ export default () => ({
     database,
     jwt: {
         secret_key: process.env.JWT_SECRETKEY,
-        refresh_key: process.env.JWT_REFRESH_SECRET,
         email_key: process.env.JWT_EMAIL_TOKEN,
     },
     rateLimit,
