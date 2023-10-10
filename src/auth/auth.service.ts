@@ -2,13 +2,16 @@ import { ForbiddenException, HttpException, HttpStatus, Injectable, Unauthorized
 import { JwtService } from '@nestjs/jwt';
 import { RegisterDto } from './dto/register.dto';
 import { PrismaService } from '../prisma.service';
-import { Prisma, ResetPassword, User } from '@prisma/client';
-import { bcryptPassword, comparePassword } from '../utils/password';
+import { ResetPassword, User } from '@prisma/client';
+import { bcryptPassword, comparePassword } from '../utils/password.util';
 import { ConfigService } from '@nestjs/config';
 import { LoginDto } from './dto/login.dto';
-import { use } from 'passport';
 import { ForgotPasswordDto } from './dto/ForgotPassword.dto';
 import { ResetPasswordDto } from './dto/ResetPassword.dto';
+import { ResetPasswordEntity } from './entities/resetPassword.entity';
+import { ForgotPasswordEntity } from './entities/forgotPassword.entity';
+import { LoginEntity } from './entities/login.entity';
+import { RegisterEntity } from './entities/register.entity';
 
 @Injectable()
 export class AuthService {
@@ -18,7 +21,7 @@ export class AuthService {
         private configService: ConfigService,
     ) {}
 
-    async register(registerDto: RegisterDto) {
+    async register(registerDto: RegisterDto): Promise<RegisterEntity> {
         const { email, password } = registerDto;
         const userExist: User | null = await this.prisma.user.findUnique({
             where: {
@@ -41,7 +44,7 @@ export class AuthService {
         };
     }
 
-    async login(loginDto: LoginDto) {
+    async login(loginDto: LoginDto): Promise<LoginEntity> {
         const { email, password } = loginDto;
         const user: User | null = await this.prisma.user.findUnique({
             where: {
@@ -60,7 +63,7 @@ export class AuthService {
         };
     }
 
-    async forgotPassword(forgotPasswordDto: ForgotPasswordDto): Promise<string> {
+    async forgotPassword(forgotPasswordDto: ForgotPasswordDto): Promise<ForgotPasswordEntity> {
         const { email } = forgotPasswordDto;
         const user: User = await this.prisma.user.findUnique({
             where: {
@@ -83,10 +86,10 @@ export class AuthService {
             // send Email
             console.log('=>(auth.service.ts:82) token', token);
         }
-        return 'Email Send Successfully';
+        return { message: 'Email Send Successfully' };
     }
 
-    async resetPassword(resetPasswordDto: ResetPasswordDto): Promise<string> {
+    async resetPassword(resetPasswordDto: ResetPasswordDto): Promise<ResetPasswordEntity> {
         const { password, token } = resetPasswordDto;
         const checkJWT = this.jwtService.verify(token, { secret: this.configService.get('jwt.email_key') });
         const resetPassword: ResetPassword = await this.prisma.resetPassword.findUnique({
@@ -109,7 +112,7 @@ export class AuthService {
             },
         });
         await this.prisma.resetPassword.update({ where: { token, email: checkJWT.email }, data: { use: true } });
-        return 'Your password Changed Successfully';
+        return { message: 'Your password Changed Successfully' };
     }
 
     generateToken(payload: object, type: string = 'TOKEN'): string {

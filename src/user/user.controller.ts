@@ -1,39 +1,48 @@
-import { Controller, Get, Body, Patch, Delete, UseGuards, Request, UsePipes } from '@nestjs/common';
+import {
+    Controller,
+    Get,
+    Body,
+    Patch,
+    Delete,
+    UseGuards,
+    Request,
+    UsePipes,
+    ClassSerializerInterceptor,
+    UseInterceptors,
+} from '@nestjs/common';
 import { UserService } from './user.service';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { JwtAuthGuard } from '../common/passport/jwt-auth.guard';
 import { JoiValidationPipe } from '../validator/joi-validation.pipe';
 import { profileUpdateSchema } from './validator/profile.validation';
+import { UserEntity } from './entities/user.entity';
+import { Success, success } from '../utils/response.util';
 
 @Controller('user')
 export class UserController {
     constructor(private readonly userService: UserService) {}
 
     @UseGuards(JwtAuthGuard)
+    @UseInterceptors(ClassSerializerInterceptor)
     @Get('profile')
-    getProfile(@Request() req) {
-        return req.user;
+    getProfile(@Request() req): Success<UserEntity> {
+        return success(new UserEntity(req.user));
     }
 
     @UseGuards(JwtAuthGuard)
+    @UseInterceptors(ClassSerializerInterceptor)
     @UsePipes(new JoiValidationPipe(profileUpdateSchema))
     @Patch('profile')
-    update(@Request() req, @Body() updateUserDto: UpdateUserDto) {
-        const { firstName, lastName } = updateUserDto;
-        // Check and update lastName
-        updateUserDto.lastName =
-            lastName !== undefined && lastName !== null && lastName.trim() === '' ? req.user.lastName : lastName;
-
-        // Check and update firstName
-        updateUserDto.firstName =
-            firstName !== undefined && firstName !== null && firstName.trim() === '' ? req.user.firstName : firstName;
-
-        return this.userService.update(req.user.id, updateUserDto);
+    async update(@Request() req, @Body() updateUserDto: UpdateUserDto): Promise<Success<UserEntity>> {
+        const result: UserEntity = await this.userService.update(req.user.id, updateUserDto);
+        return success(new UserEntity(result));
     }
 
     @UseGuards(JwtAuthGuard)
+    @UseInterceptors(ClassSerializerInterceptor)
     @Delete('profile')
-    remove(@Request() req) {
-        return this.userService.remove(req.user.id);
+    async remove(@Request() req): Promise<Success<UserEntity>> {
+        const result: UserEntity = await this.userService.remove(req.user.id);
+        return success(new UserEntity(result));
     }
 }
