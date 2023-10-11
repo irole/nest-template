@@ -1,4 +1,4 @@
-import { ForbiddenException, HttpException, HttpStatus, Injectable, UnauthorizedException } from '@nestjs/common';
+import { ForbiddenException, Injectable, ConflictException, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { RegisterDto } from './dto/register.dto';
 import { PrismaService } from '../prisma.service';
@@ -29,7 +29,7 @@ export class AuthService {
             },
         });
         if (userExist) {
-            throw new HttpException('This user registered before!', HttpStatus.CONFLICT);
+            throw new ConflictException('This user registered before!');
         }
 
         const user: User = await this.prisma.user.create({
@@ -77,14 +77,13 @@ export class AuthService {
                 email,
                 token: this.generateToken({ email }, 'EMAIL'),
             };
-            const { token } = await this.prisma.resetPassword.create({
+            await this.prisma.resetPassword.create({
                 data: {
                     ...resetPasswordObject,
                 },
                 select: { token: true },
             });
             // send Email
-            console.log('=>(auth.service.ts:82) token', token);
         }
         return { message: 'Email Send Successfully' };
     }
